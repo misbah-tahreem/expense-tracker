@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <!-- Google Fonts for elegant typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Main Container -->
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <!-- Inline SVG Wallet Icon -->
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M2 7V18C2 19.6569 3.34315 21 5 21H19C20.6569 21 22 19.6569 22 18V9C22 7.34315 20.6569 6 19 6H5C3.34315 6 2 7.34315 2 9V7ZM2 7V5C2 3.34315 3.34315 2 5 2H17"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <path d="M16 15H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1>Personal Expense Tracker</h1>
+                    <p>Track your income, expenses, and balance with ease.</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- BALANCE SUMMARY -->
+        <section class="summary-section">
+            <div class="summary-card" id="balanceCard">
+                <span class="summary-label">Current Balance</span>
+                <span class="summary-value" id="balanceDisplay">Rs. 0</span>
+            </div>
+            <div class="summary-card income" id="incomeCard">
+                <span class="summary-label">Total Income</span>
+                <span class="summary-value" id="incomeDisplay">Rs. 0</span>
+            </div>
+            <div class="summary-card expense" id="expenseCard">
+                <span class="summary-label">Total Expense</span>
+                <span class="summary-value" id="expenseDisplay">Rs. 0</span>
+            </div>
+        </section>
+
+        <!-- ADD TRANSACTION FORM -->
+        <section class="form-section">
+            <h2>Add Transaction</h2>
+            <form id="transactionForm">
+                <!-- Row 1: Description & Amount -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" placeholder="e.g., Lunch" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount (Rs.)</label>
+                        <input type="number" id="amount" placeholder="e.g., 850" min="1" step="1" required>
+                    </div>
+                </div>
+                <!-- Row 2: Type & Category -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <select id="type" required>
+                            <option value="Income">Income</option>
+                            <option value="Expense">Expense</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="Salary">Salary</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Row 3: Date -->
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                </div>
+                <!-- Validation Message -->
+                <div id="formError" class="error-message" style="display: none;"></div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn-primary">Add Transaction</button>
+            </form>
+        </section>
+
+        <!-- TRANSACTION LIST & FILTER -->
+        <section class="transactions-section">
+            <div class="transactions-header">
+                <h2>Transaction History</h2>
+                <div class="filter-control">
+                    <label for="categoryFilter">Filter by Category:</label>
+                    <select id="categoryFilter">
+                        <option value="All">All</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div id="transactionList" class="transaction-list">
+                <!-- Transactions will be rendered here -->
+                <div class="empty-state">No transactions yet. Add your first transaction to get started.</div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
